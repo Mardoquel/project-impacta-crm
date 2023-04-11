@@ -19,5 +19,6 @@ def home(request):
     else:
         return render(request, 'home.html',{})
 
+
 def user_logout(request):
     pass
