@@ -21,4 +21,6 @@ def home(request):
 
 
 def user_logout(request):
-    pass
+    logout(request)
+    messages.success(request, 'Desconectado com sucesso.')
+    return redirect('home')
