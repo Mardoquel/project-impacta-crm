@@ -24,3 +24,6 @@ def user_logout(request):
     logout(request)
     messages.success(request, 'Desconectado com sucesso.')
     return redirect('home')
+
+def user_register(request):
+    return render(request, 'register.html',{})
