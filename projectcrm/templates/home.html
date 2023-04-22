@@ -5,20 +5,48 @@
 
 {% if user.is_authenticated %}
 
-<br>
-<div class="card" style="width: 18rem;">
-  <!-- <img src="..." class="card-img-top" alt="..."> -->
-  <div class="card-body">
-    <h5 class="card-title">Aluno:</h5>
-    <h5 class="card-title">Mardoquel Gadi Melo</h5>
-    <p class="card-text">Turma: ADS 5A </p>
-    <!-- <a href="#" class="btn btn-primary">Editar</a> -->
-  </div>
-</div>
+
+<table class="table table-hover table-striped">
+  <thead class="table-dark">
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Phone</th>
+      <th scope="col">Address</th>
+      <th scope="col">City</th>
+      <th scope="col">State</th>
+      <th scope="col">Zipcode</th>
+      <th scope="col">ID</th>
+    </tr>
+  </thead>
+  <tbody>
+
+{% if records %}
+  {% for record in records %}
+    <tr>
+      <td>{{ record.first_name }}
+          {{ record.last_name }}</td>
+      <td>{{ record.email }}</td>
+      <td>{{ record.phone }}</td>
+      <td>{{ record.address }}</td>
+      <td>{{ record.city }}</td>
+      <td>{{ record.state }}</td>
+      <td>{{ record.zipcode }}</td>
+      <td>{{ record.id }}</td>
+    </tr>
+
+  {% endfor %}
+
+{% endif %}
+    </tr>
+  </tbody>
+</table>
+
+
 {% else %}
 
 <h1>Login</h1>
-<br/>
+
 <form method="post" action="{% url 'home' %}">
     {% csrf_token %}
     <form>
