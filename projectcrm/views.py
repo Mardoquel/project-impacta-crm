@@ -58,3 +58,12 @@ def add_record(request):
 	else:
 		messages.success(request, "Precisa estar logado.")
 		return redirect('home')
+    
+def customer_record(request, pk):
+	if request.user.is_authenticated:
+		
+		customer_record = Record.objects.get(id=pk)
+		return render(request, 'record.html', {'customer_record':customer_record})
+	else:
+		messages.success(request, "Voce precisa estar logado para poder visualizar essa pagina.")
+		return redirect('home')
