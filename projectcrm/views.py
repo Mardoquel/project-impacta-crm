@@ -80,3 +80,13 @@ def update_record(request, pk):
 	else:
 		messages.success(request, "Você precisa estar logado...")
 		return redirect('home')
+	
+def delete_record(request, pk):
+	if request.user.is_authenticated:
+		delete_it = Record.objects.get(id=pk)
+		delete_it.delete()
+		messages.success(request, "Informação deleteda com sucesso...")
+		return redirect('home')
+	else:
+		messages.success(request, "Você precisa estar logado...")
+		return redirect('home')
